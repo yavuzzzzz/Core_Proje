@@ -1,14 +1,15 @@
 ﻿@model EntityLayer.Concrete.Portfolio
 @{
-	ViewData["Title"] = "AddPortfolio";
+	ViewData["Title"] = "UpdatePortfolio";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="card-header border-0">
-	<h3 class="mb-0">Proje Ekleme Sayfası</h3>
+	<h3 class="mb-0">Proje Güncelleme Sayfası</h3>
 </div>
-@using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
+@using (Html.BeginForm("UpdatePortfolio", "Portfolio", FormMethod.Post))
 {
+	@Html.HiddenFor(x => x.PortfolioID)
 	<br />
 	@Html.Label("Proje Adı")
 	@Html.TextBoxFor(x => x.Name, new{ @class = "form-control"})
@@ -26,16 +27,16 @@
 	@Html.TextBoxFor(x => x.ProjectUrl, new{ @class = "form-control"})
 	@Html.ValidationMessageFor(x => x.ProjectUrl)
 	<br />
-		<label>Proje Fiyatı</label>
+	<label>Proje Fiyatı</label>
 	@Html.TextBoxFor(x => x.Price, new{ @class = "form-control"})
 	@Html.ValidationMessageFor(x => x.Price)
-		<br />
+	<br />
 	<label>Tamamlanma Oranı</label>
 	@Html.TextBoxFor(x => x.Value, new{ @class = "form-control"})
 	@Html.ValidationMessageFor(x => x.Value)
 	<br />
 
-	<button class="btn btn-info">Kaydet</button>
+	<button class="btn btn-outline-primary">Güncelle</button>
 }
 
 
