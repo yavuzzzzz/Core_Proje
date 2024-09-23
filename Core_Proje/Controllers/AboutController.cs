@@ -5,24 +5,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Proje.Controllers
 {
-	public class FeatureController : Controller
+	public class AboutController : Controller
 	{
-		FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+		AboutManager aboutManager = new AboutManager(new EfAboutDal());
 
 		[HttpGet]
 		public IActionResult Index()
 		{
 			ViewBag.v1 = "Düzenleme";
-			ViewBag.v2 = "Öne Çıkanlar";
-			ViewBag.v3 = "Öne Çıkan Sayfası";
+			ViewBag.v2 = "Hakkımda";
+			ViewBag.v3 = "Hakkımda Sayfası";
 
-			var values = featureManager.TGetById(1);
+			var values = aboutManager.TGetById(4);
 			return View(values);
 		}
 		[HttpPost]
-		public IActionResult Index(Feature feature)
+		public IActionResult Index(About about)
 		{
-			featureManager.TUpdate(feature);
+			aboutManager.TUpdate(about);
 			return RedirectToAction("Index", "Default");
 		}
 	}
